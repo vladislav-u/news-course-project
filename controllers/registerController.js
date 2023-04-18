@@ -1,3 +1,4 @@
+import { generateJwtToken } from '../helpers/token-generator.js';
 import { userModel } from '../models/userModel.js';
 
 export const registerView = (req, res) => {
@@ -5,10 +6,10 @@ export const registerView = (req, res) => {
 };
 
 export const registerUser = async (req, res) => {
-	let userEmail = await userModel.findOne({
+	const userEmail = await userModel.findOne({
 		email: req.body.email,
 	});
-	let userName = await userModel.findOne({
+	const userName = await userModel.findOne({
 		username: req.body.username,
 	});
 
@@ -29,9 +30,11 @@ export const registerUser = async (req, res) => {
 			password: req.body.password,
 		});
 
+		user.token = generateJwtToken(user._id);
+
 		await user.save();
 
 		console.log(user);
-		res.redirect('/');
+		res.status(201).redirect('/');
 	}
 };

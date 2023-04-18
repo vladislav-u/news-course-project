@@ -19,8 +19,9 @@ const userSchema = new Schema({
 		type: String,
 		required: true,
 		unique: true,
-		minLength: 8,
-		maxLength: 30,
+	},
+	token: {
+		type: String,
 	},
 });
 

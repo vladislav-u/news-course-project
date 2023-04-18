@@ -1,8 +1,11 @@
+import cookieParser from 'cookie-parser';
+import * as dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
 import loginRouter from './routes/login.js';
 import registerRouter from './routes/register.js';
 
+dotenv.config();
 const app = express();
 const port = 5000;
 
@@ -17,6 +20,7 @@ try {
 
 app.set('view engine', 'ejs');
 app.use(express.json());
+app.use(cookieParser());
 
 app.get('/', (req, res) => {
 	res.render('index');
