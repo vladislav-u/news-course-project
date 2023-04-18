@@ -1,5 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import loginRouter from './routes/login.js';
+import registerRouter from './routes/register.js';
 
 const app = express();
 const port = 5000;
@@ -13,7 +15,15 @@ try {
 	console.log('Failed to connect to MongoDB', error);
 }
 
+app.set('view engine', 'ejs');
 app.use(express.json());
+
+app.get('/', (req, res) => {
+	res.render('index');
+});
+
+app.use('/', loginRouter);
+app.use('/', registerRouter);
 
 app.listen(port, () => {
 	console.log(`listening on port ${port}`);
