@@ -23,7 +23,7 @@ export const registerUser = async (req, res) => {
 			error: 'User already exists',
 		});
 	} else {
-		user = new userModel({
+		const user = new userModel({
 			email: req.body.email,
 			username: req.body.username,
 			password: req.body.password,
