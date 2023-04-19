@@ -12,7 +12,7 @@ export const loginUser = async (req, res) => {
 	if (user && (await bcrypt.compareSync(req.body.password, user.password))) {
 		user.token = generateJwtToken(user._id);
 		res.cookie('token', user.token, { maxAge: 3600 * 24 });
-		res.render('index');
+		res.redirect('/');
 	} else {
 		res.status(400).render('login', {
 			error: 'Email or password is incorrect',
