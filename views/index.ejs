@@ -21,7 +21,9 @@
 		<!-- Navigation Bar -->
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="/">OVERSEER</a>
+				<a class="navbar-brand" href="/"
+					><i class="fa-solid fa-eye"></i>VERSEER</a
+				>
 
 				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 					<div class="navbar-nav ms-auto">
@@ -40,12 +42,12 @@
 		<div class="container">
 			<div class="blog-section">
 				<div class="title">
-					<h2>OVERSEER</h2>
+					<h2><i class="fa-solid fa-eye"></i>VERSEER</h2>
 					<p>Most Popular and Fresh News Today</p>
 				</div>
 
 				<!-- Search Bar -->
-				<form>
+				<form action="/search" method="GET">
 					<div class="search-form">
 						<input
 							class="search-txt"
@@ -71,7 +73,10 @@
 							<a href="<%= article.url %>">Read more</a>
 						</div>
 						<div class="posted-date">
-							<p><%= article.publishedAt %></p>
+							<p>
+								<%= article.publishedAt.split('T')[0] + " " +
+								article.publishedAt.split('T')[1].slice(0, -1) %>
+							</p>
 						</div>
 					</div>
 					<% }) %>
