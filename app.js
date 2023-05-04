@@ -2,6 +2,8 @@ import cookieParser from 'cookie-parser';
 import * as dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import homeRouter from './routes/home.js';
 import loginRouter from './routes/login.js';
 import registerRouter from './routes/register.js';
@@ -21,6 +23,9 @@ try {
 
 app.set('view engine', 'ejs');
 app.use(express.json());
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use(express.static(__dirname + '/public'));
 app.use(cookieParser());
 
 app.use('/', homeRouter);

@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
+}
+body {
+	background: rgb(9, 121, 89);
+	background: linear-gradient(
+		90deg,
+		rgba(9, 121, 89, 1) 28%,
+		rgba(0, 212, 255, 1) 81%
+	);
+}
+
+.container {
+	width: 100%;
+}
+.blog-section {
+	width: 85%;
+	margin: 20px auto;
+}
+
+.blog-section .title {
+	width: 60%;
+	text-align: center;
+	margin: auto;
+}
+
+.blog-section .title h2 {
+	font-size: 40px;
+	color: #000;
+	text-transform: uppercase;
+	margin-top: 50px;
+}
+
+.blog-section .title p {
+	font-size: 18px;
+	color: #000;
+	margin-top: 20px;
+}
+
+.cards {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 50px;
+	margin: 25px auto;
+}
+
+.cards .card {
+	width: 100%;
+	position: relative;
+}
+
+.image-section img {
+	width: 100%;
+	height: auto;
+}
+
+.content {
+	padding: 15px 20px;
+}
+
+.content h4 {
+	font-size: 24px;
+	color: #222;
+	font-weight: 500;
+}
+
+.content p {
+	font-size: 15px;
+	color: #7e7e7e;
+}
+
+.content a {
+	text-decoration: none;
+	color: #fff;
+	margin-top: 12px;
+	display: inline-block;
+	background-color: #3a706a;
+	padding: 8px 15px;
+}
+
+.card .posted-date {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: inline-block;
+	background-color: #ada62b;
+	opacity: 0.7;
+	padding: 6px 15px;
+	padding-bottom: 0px;
+	height: auto;
+}
+
+@media screen and (max-width: 992px) {
+	.cards {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.cards {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Search box */
+.search-form {
+	border: 1px solid #000;
+	display: flex;
+	padding: 0 20px;
+
+	justify-content: center;
+	align-items: center;
+	height: 50px;
+}
+
+.search-txt {
+	border: none;
+	background: none;
+	outline: none;
+	font-size: 20px;
+	display: block;
+	margin-left: 0;
+	margin-right: auto;
+}
+
+.search-btn {
+	border: none;
+	background: none;
+	outline: none;
+	display: block;
+	margin-left: auto;
+	margin-right: 0;
+}
