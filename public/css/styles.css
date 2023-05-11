@@ -104,6 +104,19 @@ body {
 	.cards {
 		grid-template-columns: 1fr;
 	}
+	#navbarNavAltMarkup:not(.show) {
+    	display: flex;
+		justify-content: end;
+		flex-basis: 20%;
+	}
+	.navbar-nav{
+		margin-left: 0 !important; 
+		margin-right: 0 !important;
+		width: 40%;
+		flex-direction: row;
+		justify-content: end;
+		gap: 3vw;
+	}
 }
 
 /* Search box */
@@ -124,7 +137,7 @@ body {
 	font-size: 20px;
 	display: block;
 	margin-left: 0;
-	margin-right: auto;
+	width: 100%;
 }
 
 .search-btn {
@@ -133,5 +146,4 @@ body {
 	outline: none;
 	display: block;
 	margin-left: auto;
-	margin-right: 0;
 }

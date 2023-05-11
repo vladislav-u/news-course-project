@@ -54,6 +54,7 @@
 							type="search"
 							name="searchQuery"
 							placeholder="Search"
+							required
 						/>
 						<button class="search-btn">
 							<i class="fa-solid fa-magnifying-glass"></i>
@@ -62,7 +63,7 @@
 				</form>
 
 				<div class="cards">
-					<% articles.forEach((article) => { %>
+					<% let articleID = 0; articles.forEach((article) => { %>
 					<div class="card">
 						<div class="image-section">
 							<img src="<%= article.image %>" alt="Preview Image" />
