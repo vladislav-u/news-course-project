@@ -1,4 +1,5 @@
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import * as dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
@@ -22,6 +23,25 @@ try {
 }
 
 app.set('view engine', 'ejs');
+app.use(cors());
+
+app.use(function (req, res, next) {
+	res.setHeader('Access-Control-Allow-Origin', '*');
+
+	res.setHeader(
+		'Access-Control-Allow-Methods',
+		'GET, POST, OPTIONS, PUT, PATCH, DELETE'
+	);
+
+	res.setHeader(
+		'Access-Control-Allow-Headers',
+		'Content-Type,append,delete,entries,foreach,get,has,keys,set,values,Authorization,X-Requested-With,content-type'
+	);
+
+	res.setHeader('Access-Control-Allow-Credentials', true);
+	next();
+});
+
 app.use(express.json());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

@@ -13,7 +13,7 @@ export const homeView = (req, res) => {
 				articles = data.articles;
 			});
 
-		res.render('index', { articles: articles });
+		res.json(articles);
 	}
 
 	getArticles();
