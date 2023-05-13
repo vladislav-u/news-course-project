@@ -15,12 +15,12 @@ export const registerUser = async (req, res) => {
 
 	if (userEmail) {
 		console.log('Email already registered');
-		res.status(400).render('register', {
+		res.status(400).json({
 			error: 'User already exists',
 		});
 	} else if (userName) {
 		console.log('Username already registered');
-		res.status(400).render('register', {
+		res.status(400).json({
 			error: 'User already exists',
 		});
 	} else {
@@ -34,7 +34,6 @@ export const registerUser = async (req, res) => {
 
 		await user.save();
 
-		console.log(user);
-		res.status(201).redirect('/');
+		res.status(201).json(user);
 	}
 };
