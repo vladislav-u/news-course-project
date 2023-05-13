@@ -14,6 +14,7 @@ export const homeView = (req, res) => {
 			});
 
 		res.json(articles);
+		// res.render('index', { articles: articles });
 	}
 
 	getArticles();
@@ -22,7 +23,7 @@ export const homeView = (req, res) => {
 export const homeSearch = (req, res) => {
 	const url =
 		'https://gnews.io/api/v4/search?q=' +
-		req.query.searchQuery +
+		req.query.query +
 		'&apikey=' +
 		process.env.GNEWS_KEY;
 
@@ -36,7 +37,8 @@ export const homeSearch = (req, res) => {
 				articles = data.articles;
 			});
 
-		res.render('index', { articles: articles });
+		// res.render('index', { articles: articles });
+		res.json(articles);
 	}
 
 	getArticles();

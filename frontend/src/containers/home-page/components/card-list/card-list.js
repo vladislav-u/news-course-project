@@ -14,7 +14,7 @@ function CardList({ children }) {
 
 	return (
 		<>
-			<ul>
+			<ul className="card__list">
 				{data.map(({ image, title, description, url, source, publishedAt }) => (
 					<Card
 						title={title}

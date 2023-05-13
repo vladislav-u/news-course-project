@@ -12,10 +12,10 @@ function Navbar() {
 				</div>
 				<nav>
 					<ul className="nav__links">
-						<li>
+						<li className="nav__link">
 							<Link to="/login">Login</Link>
 						</li>
-						<li>
+						<li className="nav__link">
 							<Link to="/register">Register</Link>
 						</li>
 					</ul>
