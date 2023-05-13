@@ -4,13 +4,11 @@ import './card.css';
 function Card(props) {
 	const { image, title, description, url, source, publishedAt } = props;
 	const date =
-		props.publishedAt.split('T')[0] +
-		' ' +
-		props.publishedAt.split('T')[1].slice(0, -1);
+		publishedAt.split('T')[0] + ' ' + publishedAt.split('T')[1].slice(0, -1);
 
 	return (
 		<>
-			<div className="container">
+			<div className="card__container">
 				<div className="card">
 					<div className="card__header">
 						<img
