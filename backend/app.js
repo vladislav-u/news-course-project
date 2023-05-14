@@ -5,6 +5,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import verifyToken from './middleware/auth.js';
+import favouritesRouter from './routes/favourites.js';
 import homeRouter from './routes/home.js';
 import loginRouter from './routes/login.js';
 import registerRouter from './routes/register.js';
@@ -23,7 +25,13 @@ try {
 }
 
 app.set('view engine', 'ejs');
-app.use(cors());
+app.use(
+	cors({
+		credentials: true,
+		allowedHeaders: ['Content-Type', 'Authorization'],
+		origin: ['http://localhost:3000'],
+	})
+);
 
 app.use(function (req, res, next) {
 	res.setHeader('Access-Control-Allow-Origin', '*');
@@ -51,6 +59,7 @@ app.use(cookieParser());
 app.use('/', homeRouter);
 app.use('/', loginRouter);
 app.use('/', registerRouter);
+app.use('/', verifyToken, favouritesRouter);
 
 app.listen(port, () => {
 	console.log(`listening on port ${port}`);

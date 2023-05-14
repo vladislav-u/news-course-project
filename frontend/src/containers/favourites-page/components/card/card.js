@@ -2,9 +2,7 @@
 import './card.css';
 
 function Card(props) {
-	const { image, title, description, url, source, publishedAt } = props;
-	const date =
-		publishedAt.split('T')[0] + ' ' + publishedAt.split('T')[1].slice(0, -1);
+	const { image, title, description, url, sourceName, sourceUrl, date } = props;
 
 	const handleFavourite = () => {
 		fetch('http://localhost:5000/favourites', {
@@ -17,8 +15,8 @@ function Card(props) {
 				url,
 				title,
 				description,
-				sourceName: source.name,
-				sourceUrl: source.url,
+				sourceName,
+				sourceUrl,
 				date,
 			}),
 		})
@@ -50,7 +48,7 @@ function Card(props) {
 					<div className="card__footer">
 						<div className="user">
 							<div className="user__info">
-								<a href={source.url}>{source.name}</a>
+								<a href={sourceUrl}>{sourceName}</a>
 								<small>{date}</small>
 							</div>
 						</div>

@@ -13,6 +13,9 @@ function Navbar() {
 				<nav>
 					<ul className="nav__links">
 						<li className="nav__link">
+							<Link to="/favourites">Favourites</Link>
+						</li>
+						<li className="nav__link">
 							<Link to="/login">Login</Link>
 						</li>
 						<li className="nav__link">
