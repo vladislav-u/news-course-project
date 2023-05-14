@@ -7,7 +7,7 @@ function Navbar() {
 			<header>
 				<div className="name">
 					<h1>
-						<i class="fa-solid fa-eye"></i>VERSEER
+						<i className="fa-solid fa-eye"></i>VERSEER
 					</h1>
 				</div>
 				<nav>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './register-form.css';
 
 function RegisterForm() {
@@ -7,6 +8,8 @@ function RegisterForm() {
 		email: '',
 		password: '',
 	});
+
+	const navigate = useNavigate();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -20,6 +23,7 @@ function RegisterForm() {
 			.then((response) => response.json())
 			.then((data) => {
 				console.log(data);
+				navigate('/');
 			})
 			.catch((error) => {
 				console.log(error);
@@ -32,7 +36,7 @@ function RegisterForm() {
 
 	return (
 		<>
-			<div className="wrapper">
+			<div className="register__wrapper">
 				<form className="register" onSubmit={handleSubmit}>
 					<p className="title">Register</p>
 					<input

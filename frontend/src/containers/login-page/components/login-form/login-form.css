@@ -1,4 +1,4 @@
-.wrapper {
+.login__wrapper {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -6,6 +6,7 @@
 	width: 100vh;
 	min-height: 100vh;
 	padding: 20px;
+	margin: auto;
 }
 
 .login {
@@ -24,7 +25,6 @@
 	margin-bottom: 10px;
 	width: 100%;
 	border: 1px solid #ddd;
-	transition: border-width 0.2s ease;
 	border-radius: 2px;
 	color: #000;
 }

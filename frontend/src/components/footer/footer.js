@@ -7,9 +7,9 @@ function Footer() {
 				<div className="footer__item">
 					<div className="footer__title">About Us</div>
 					<div className="footer__descr">
-						<span>Good</span>
-						<span>Smart</span>
-						<span>Strong</span>
+						<span>Fast</span>
+						<span>Fresh</span>
+						<span>Precise</span>
 					</div>
 				</div>
 				<div className="footer__item">

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import './login-form.css';
 
 function LoginForm() {
@@ -6,6 +8,8 @@ function LoginForm() {
 		email: '',
 		password: '',
 	});
+
+	const navigate = useNavigate();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -19,6 +23,7 @@ function LoginForm() {
 			.then((response) => response.json())
 			.then((data) => {
 				console.log(data);
+				navigate('/');
 			})
 			.catch((error) => {
 				console.log(error);
@@ -31,7 +36,7 @@ function LoginForm() {
 
 	return (
 		<>
-			<div className="wrapper">
+			<div className="login__wrapper">
 				<form className="login" onSubmit={handleSubmit}>
 					<p className="title">Log in</p>
 					<input
@@ -52,7 +57,7 @@ function LoginForm() {
 						onChange={handleChange}
 					/>
 					<button className="login__submit" type="submit">
-						<span class="state">Log in</span>
+						<span className="state">Log in</span>
 					</button>
 				</form>
 			</div>

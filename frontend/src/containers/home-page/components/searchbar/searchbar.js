@@ -27,7 +27,7 @@ function SearchBar() {
 				onChange={(e) => setQuery(e.target.value)}
 			/>
 			<button className="search__button" onClick={handleSearch}>
-				<i class="fa-solid fa-magnifying-glass fa-xl"></i>
+				<i className="fa-solid fa-magnifying-glass fa-xl"></i>
 			</button>
 		</div>
 	);
