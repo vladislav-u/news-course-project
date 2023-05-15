@@ -9,7 +9,7 @@ function CardList({ children }) {
 
 	useEffect(() => {
 		axios
-			.get('http://localhost:5000/favourites', {
+			.get('http://localhost:3000/favourites', {
 				withCredentials: true,
 			})
 			.then((response) => {

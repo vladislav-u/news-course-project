@@ -6,7 +6,7 @@ function CardList({ children }) {
 	const [data, setData] = useState([]);
 
 	useEffect(() => {
-		fetch('http://localhost:5000/')
+		fetch('http://localhost:3000/')
 			.then((response) => response.json())
 			.then((data) => setData(data))
 			.catch((error) => console.error('Error fetching data: ', error));

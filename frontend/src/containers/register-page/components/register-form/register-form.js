@@ -13,7 +13,7 @@ function RegisterForm() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		fetch('http://localhost:5000/register', {
+		fetch('http://localhost:3000/register', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ function RegisterForm() {
 			.then((response) => response.json())
 			.then((data) => {
 				console.log(data);
-				navigate('/');
+				navigate('/login');
 			})
 			.catch((error) => {
 				console.log(error);

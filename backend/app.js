@@ -13,7 +13,7 @@ import registerRouter from './routes/register.js';
 
 dotenv.config();
 const app = express();
-const port = 5000;
+const port = 3000;
 
 try {
 	await mongoose.connect(
@@ -25,28 +25,32 @@ try {
 }
 
 app.set('view engine', 'ejs');
+app.use(cookieParser());
 app.use(
 	cors({
 		credentials: true,
 		allowedHeaders: ['Content-Type', 'Authorization'],
-		origin: ['http://localhost:3000'],
+		origin: ['http://localhost:3001'],
 	})
 );
 
 app.use(function (req, res, next) {
-	res.setHeader('Access-Control-Allow-Origin', '*');
+	res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001');
 
 	res.setHeader(
 		'Access-Control-Allow-Methods',
 		'GET, POST, OPTIONS, PUT, PATCH, DELETE'
 	);
 
-	res.setHeader(
-		'Access-Control-Allow-Headers',
-		'Content-Type,append,delete,entries,foreach,get,has,keys,set,values,Authorization,X-Requested-With,content-type'
-	);
+	res.setHeader('Content-Type', 'application/json;charset=UTF-8');
 
 	res.setHeader('Access-Control-Allow-Credentials', true);
+
+	res.setHeader(
+		'Access-Control-Allow-Headers',
+		'Origin, X-Requested-With, Content-Type, Accept'
+	);
+
 	next();
 });
 
@@ -54,7 +58,6 @@ app.use(express.json());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.use(express.static(__dirname + '/public'));
-app.use(cookieParser());
 
 app.use('/', homeRouter);
 app.use('/', loginRouter);

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,16 +14,14 @@ function LoginForm() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		fetch('http://localhost:5000/login', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(formData),
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				console.log(data);
+		axios
+			.post('http://localhost:3000/login', formData, {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			})
+			.then((response) => {
+				console.log(response.data);
 				navigate('/');
 			})
 			.catch((error) => {

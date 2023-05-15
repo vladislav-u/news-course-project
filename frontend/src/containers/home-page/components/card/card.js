@@ -7,7 +7,7 @@ function Card(props) {
 		publishedAt.split('T')[0] + ' ' + publishedAt.split('T')[1].slice(0, -1);
 
 	const handleFavourite = () => {
-		fetch('http://localhost:5000/favourites', {
+		fetch('http://localhost:3000/favourites', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

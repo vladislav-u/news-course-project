@@ -1,28 +1,36 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
+import axios from 'axios';
 import './card.css';
 
 function Card(props) {
 	const { image, title, description, url, sourceName, sourceUrl, date } = props;
 
 	const handleFavourite = () => {
-		fetch('http://localhost:5000/favourites', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				image,
-				url,
-				title,
-				description,
-				sourceName,
-				sourceUrl,
-				date,
-			}),
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				console.log(data);
+		const axiosInstance = axios.create({
+			withCredentials: true,
+		});
+
+		axiosInstance
+			.post(
+				'http://localhost:3000/favourites',
+				{
+					image,
+					url,
+					title,
+					description,
+					sourceName,
+					sourceUrl,
+					date,
+				},
+				{
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					Cookie: 'test:test;',
+				}
+			)
+			.then((response) => {
+				console.log(response.data);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -54,7 +62,7 @@ function Card(props) {
 						</div>
 						<div className="favourite">
 							<button className="favourite__button" onClick={handleFavourite}>
-								<i class="fa-solid fa-star fa-2xl"></i>
+								<i className="fa-solid fa-star fa-2xl"></i>
 							</button>
 						</div>
 					</div>

@@ -7,10 +7,14 @@ export const loginUser = async (req, res) => {
 
 	if (user && (await bcrypt.compareSync(req.body.password, user.password))) {
 		user.token = generateJwtToken(user._id);
-		res.cookie('token', user.token, { maxAge: 3600 * 24 });
+		res.cookie('token', user.token, {
+			maxAge: 3600 * 24,
+			sameSite: 'strict',
+			httpOnly: true,
+		});
 
-		res.json({
-			message: 'Loginned successfully.',
+		return res.json({
+			message: 'Logined successfully',
 		});
 	} else {
 		res.status(400).json({

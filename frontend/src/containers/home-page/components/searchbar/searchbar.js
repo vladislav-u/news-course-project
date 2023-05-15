@@ -5,7 +5,7 @@ function SearchBar() {
 	const [query, setQuery] = useState('');
 
 	const handleSearch = () => {
-		fetch(`http://localhost:5000/search?query=${query}`)
+		fetch(`http://localhost:3000/search?query=${query}`)
 			.then((response) => response.json())
 			.then((data) => {
 				// handle response data
