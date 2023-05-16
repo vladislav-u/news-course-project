@@ -1,15 +1,15 @@
 import { generateJwtToken } from '../helpers/token-generator.js';
-import { userModel } from '../models/userModel.js';
+import { User } from '../models/userModel.js';
 
 export const registerView = (req, res) => {
 	res.render('register');
 };
 
 export const registerUser = async (req, res) => {
-	const userEmail = await userModel.findOne({
+	const userEmail = await User.findOne({
 		email: req.body.email,
 	});
-	const userName = await userModel.findOne({
+	const userName = await User.findOne({
 		username: req.body.username,
 	});
 
@@ -24,7 +24,7 @@ export const registerUser = async (req, res) => {
 			error: 'User already exists',
 		});
 	} else {
-		const user = new userModel({
+		const user = new User({
 			email: req.body.email,
 			username: req.body.username,
 			password: req.body.password,

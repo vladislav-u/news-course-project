@@ -29,30 +29,9 @@ app.use(cookieParser());
 app.use(
 	cors({
 		credentials: true,
-		allowedHeaders: ['Content-Type', 'Authorization'],
-		origin: ['http://localhost:3001'],
+		origin: ['http://localhost:3001', 'http://localhost:3001/favourites'],
 	})
 );
-
-app.use(function (req, res, next) {
-	res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001');
-
-	res.setHeader(
-		'Access-Control-Allow-Methods',
-		'GET, POST, OPTIONS, PUT, PATCH, DELETE'
-	);
-
-	res.setHeader('Content-Type', 'application/json;charset=UTF-8');
-
-	res.setHeader('Access-Control-Allow-Credentials', true);
-
-	res.setHeader(
-		'Access-Control-Allow-Headers',
-		'Origin, X-Requested-With, Content-Type, Accept'
-	);
-
-	next();
-});
 
 app.use(express.json());
 const __filename = fileURLToPath(import.meta.url);

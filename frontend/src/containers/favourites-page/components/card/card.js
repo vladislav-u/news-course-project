@@ -5,12 +5,18 @@ import './card.css';
 function Card(props) {
 	const { image, title, description, url, sourceName, sourceUrl, date } = props;
 
-	const handleFavourite = () => {
+	const handleFavourite = async () => {
 		const axiosInstance = axios.create({
 			withCredentials: true,
 		});
 
-		axiosInstance
+		const options = {
+			headers: {
+				'content-type': 'application/json; charset=UTF-8',
+			},
+		};
+
+		await axiosInstance
 			.post(
 				'http://localhost:3000/favourites',
 				{
@@ -22,12 +28,7 @@ function Card(props) {
 					sourceUrl,
 					date,
 				},
-				{
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					Cookie: 'test:test;',
-				}
+				options
 			)
 			.then((response) => {
 				console.log(response.data);

@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
+import axios from 'axios';
 import './card.css';
 
 function Card(props) {
@@ -6,29 +7,61 @@ function Card(props) {
 	const date =
 		publishedAt.split('T')[0] + ' ' + publishedAt.split('T')[1].slice(0, -1);
 
-	const handleFavourite = () => {
-		fetch('http://localhost:3000/favourites', {
-			method: 'POST',
+	const handleFavourite = async () => {
+		const axiosInstance = axios.create({
+			withCredentials: true,
+		});
+
+		const options = {
 			headers: {
 				'Content-Type': 'application/json',
+				'Access-Control-Allow-Credentials': 'true',
 			},
-			body: JSON.stringify({
-				image,
-				url,
-				title,
-				description,
-				sourceName: source.name,
-				sourceUrl: source.url,
-				date,
-			}),
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				console.log(data);
+		};
+
+		await axiosInstance
+			.post(
+				'http://localhost:3000/favourites',
+				{
+					image,
+					url,
+					title,
+					description,
+					sourceName: source.name,
+					sourceUrl: source.url,
+					date,
+				},
+				options
+			)
+			.then((response) => {
+				console.log(response.data);
 			})
 			.catch((error) => {
 				console.log(error);
 			});
+
+		// fetch('http://localhost:3000/favourites', {
+		// 	method: 'POST',
+		// 	headers: {
+		// 		'Content-Type': 'application/json',
+		// 	},
+		// 	body: JSON.stringify({
+		// 		image,
+		// 		url,
+		// 		title,
+		// 		description,
+		// 		sourceName: source.name,
+		// 		sourceUrl: source.url,
+		// 		date,
+		// 	}),
+		// })
+		// 	.then((response) => response.json())
+		// 	.then((data) => {
+		// 		console.log(data);
+		// 	})
+		// 	.catch((error) => {
+		// 		console.log(error);
+		// 	});
 	};
 
 	return (

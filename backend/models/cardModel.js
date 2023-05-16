@@ -36,8 +36,8 @@ const cardSchema = new Schema({
 	user: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User',
-		require: true,
+		required: true,
 	},
 });
 
-export const cardModel = mongoose.model('cardModel', cardSchema);
+export default mongoose.model('Card', cardSchema);
