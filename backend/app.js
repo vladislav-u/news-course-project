@@ -9,6 +9,7 @@ import verifyToken from './middleware/auth.js';
 import favouritesRouter from './routes/favourites.js';
 import homeRouter from './routes/home.js';
 import loginRouter from './routes/login.js';
+import logoutRouter from './routes/logout.js';
 import registerRouter from './routes/register.js';
 
 dotenv.config();
@@ -29,7 +30,11 @@ app.use(cookieParser());
 app.use(
 	cors({
 		credentials: true,
-		origin: ['http://localhost:3001', 'http://localhost:3001/favourites'],
+		origin: [
+			'http://localhost:3001',
+			'http://localhost:3001/favourites',
+			'http://localhost:3001/logout',
+		],
 	})
 );
 
@@ -40,6 +45,7 @@ app.use(express.static(__dirname + '/public'));
 
 app.use('/', homeRouter);
 app.use('/', loginRouter);
+app.use('/', logoutRouter);
 app.use('/', registerRouter);
 app.use('/', verifyToken, favouritesRouter);
 

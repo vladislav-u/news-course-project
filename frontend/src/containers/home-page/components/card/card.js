@@ -39,29 +39,6 @@ function Card(props) {
 			.catch((error) => {
 				console.log(error);
 			});
-
-		// fetch('http://localhost:3000/favourites', {
-		// 	method: 'POST',
-		// 	headers: {
-		// 		'Content-Type': 'application/json',
-		// 	},
-		// 	body: JSON.stringify({
-		// 		image,
-		// 		url,
-		// 		title,
-		// 		description,
-		// 		sourceName: source.name,
-		// 		sourceUrl: source.url,
-		// 		date,
-		// 	}),
-		// })
-		// 	.then((response) => response.json())
-		// 	.then((data) => {
-		// 		console.log(data);
-		// 	})
-		// 	.catch((error) => {
-		// 		console.log(error);
-		// 	});
 	};
 
 	return (
@@ -89,7 +66,7 @@ function Card(props) {
 						</div>
 						<div className="favourite">
 							<button className="favourite__button" onClick={handleFavourite}>
-								<i class="fa-solid fa-star fa-2xl"></i>
+								<i className="fa-solid fa-star fa-2xl"></i>
 							</button>
 						</div>
 					</div>

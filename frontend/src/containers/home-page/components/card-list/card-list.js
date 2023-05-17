@@ -15,16 +15,19 @@ function CardList({ children }) {
 	return (
 		<>
 			<ul className="card__list">
-				{data.map(({ image, title, description, url, source, publishedAt }) => (
-					<Card
-						title={title}
-						description={description}
-						image={image}
-						url={url}
-						source={source}
-						publishedAt={publishedAt}
-					/>
-				))}
+				{data.map(
+					({ image, title, description, url, source, publishedAt }, index) => (
+						<Card
+							key={index}
+							title={title}
+							description={description}
+							image={image}
+							url={url}
+							source={source}
+							publishedAt={publishedAt}
+						/>
+					)
+				)}
 			</ul>
 			{children}
 		</>

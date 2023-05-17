@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useState } from 'react';
 import './searchbar.css';
 
@@ -5,11 +6,10 @@ function SearchBar() {
 	const [query, setQuery] = useState('');
 
 	const handleSearch = () => {
-		fetch(`http://localhost:3000/search?query=${query}`)
-			.then((response) => response.json())
-			.then((data) => {
-				// handle response data
-				console.log(data);
+		axios
+			.get(`http://localhost:3000/search?query=${query}`)
+			.then((response) => {
+				console.log(response.data);
 			})
 			.catch((error) => {
 				console.log(error);

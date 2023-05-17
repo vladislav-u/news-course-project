@@ -9,7 +9,7 @@ export const loginUser = async (req, res) => {
 	if (user && (await bcrypt.compareSync(password, user.password))) {
 		user.token = generateJwtToken(user._id);
 		res.cookie('token', user.token, {
-			maxAge: 3600 * 24,
+			maxAge: 24 * 60 * 60 * 1000,
 			httpOnly: true,
 		});
 

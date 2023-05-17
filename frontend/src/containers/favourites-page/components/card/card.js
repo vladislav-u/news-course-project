@@ -12,7 +12,8 @@ function Card(props) {
 
 		const options = {
 			headers: {
-				'content-type': 'application/json; charset=UTF-8',
+				'Content-Type': 'application/json',
+				'Access-Control-Allow-Credentials': 'true',
 			},
 		};
 
@@ -32,6 +33,7 @@ function Card(props) {
 			)
 			.then((response) => {
 				console.log(response.data);
+				window.location.reload();
 			})
 			.catch((error) => {
 				console.log(error);
