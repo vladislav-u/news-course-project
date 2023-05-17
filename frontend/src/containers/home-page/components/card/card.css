@@ -84,5 +84,6 @@ img {
 	border: none;
 	background: none;
 	outline: none;
+	cursor: pointer;
 	padding: 4px;
 }

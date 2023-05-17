@@ -3,8 +3,6 @@ import cors from 'cors';
 import * as dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
-import path from 'path';
-import { fileURLToPath } from 'url';
 import verifyToken from './middleware/auth.js';
 import favouritesRouter from './routes/favourites.js';
 import homeRouter from './routes/home.js';
@@ -39,9 +37,6 @@ app.use(
 );
 
 app.use(express.json());
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-app.use(express.static(__dirname + '/public'));
 
 app.use('/', homeRouter);
 app.use('/', loginRouter);

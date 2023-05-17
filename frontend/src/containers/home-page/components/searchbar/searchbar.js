@@ -1,15 +1,19 @@
 import axios from 'axios';
 import { useState } from 'react';
+import Card from '../card/card.js';
 import './searchbar.css';
 
-function SearchBar() {
+function SearchBar({ clearCardList }) {
 	const [query, setQuery] = useState('');
+	const [searchResults, setSearchResults] = useState([]);
 
 	const handleSearch = () => {
+		console.log(query);
 		axios
-			.get(`http://localhost:3000/search?query=${query}`)
+			.get(`http://localhost:3000/search?query="${query}"`)
 			.then((response) => {
-				console.log(response.data);
+				setSearchResults(response.data);
+				clearCardList();
 			})
 			.catch((error) => {
 				console.log(error);
@@ -29,6 +33,22 @@ function SearchBar() {
 			<button className="search__button" onClick={handleSearch}>
 				<i className="fa-solid fa-magnifying-glass fa-xl"></i>
 			</button>
+
+			<ul className="card__list">
+				{searchResults.map(
+					({ image, title, description, url, source, publishedAt }, index) => (
+						<Card
+							key={index}
+							title={title}
+							description={description}
+							image={image}
+							url={url}
+							source={source}
+							publishedAt={publishedAt}
+						/>
+					)
+				)}
+			</ul>
 		</div>
 	);
 }

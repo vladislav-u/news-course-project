@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './navbar.css';
 
 function Navbar() {
@@ -37,11 +37,11 @@ function Navbar() {
 		<>
 			<header>
 				<div className="name">
-					<Link to="/">
+					<NavLink exact to="/" onClick={() => window.location.reload()}>
 						<h1>
 							<i className="fa-solid fa-eye"></i>VERSEER
 						</h1>
-					</Link>
+					</NavLink>
 				</div>
 				<nav>
 					{isLoggedIn ? (

@@ -83,6 +83,7 @@ img {
 .favourite__button {
 	border: none;
 	background: none;
+	cursor: pointer;
 	outline: none;
 	padding: 4px;
 }
