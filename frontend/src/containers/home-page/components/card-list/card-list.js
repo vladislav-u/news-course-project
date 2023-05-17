@@ -20,6 +20,13 @@ function CardList({ children }) {
 
 	return (
 		<>
+			<div className="description__container">
+				<h1 className="description__title">
+					<i className="fa-solid fa-eye"></i>VERSEER
+				</h1>
+				<br />
+				<p className="description__text">News for you!</p>
+			</div>
 			<SearchBar clearCardList={clearCardList} />
 
 			<ul className="card__list">

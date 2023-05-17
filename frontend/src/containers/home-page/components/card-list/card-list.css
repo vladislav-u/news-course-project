@@ -3,3 +3,18 @@
 	flex-wrap: wrap;
 	justify-content: center;
 }
+
+.description__container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.description__title {
+	font-size: 70px;
+	font-style: bold;
+}
+
+.description__text {
+	font-size: 30px;
+}
