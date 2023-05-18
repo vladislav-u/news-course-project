@@ -1,5 +1,4 @@
 import axios from 'axios';
-import Cookies from 'js-cookie';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -23,7 +22,6 @@ function LoginForm() {
 			})
 			.then((response) => {
 				console.log(response.data);
-				Cookies.set('isLoggedIn', 'true', { expires: 1 });
 				navigate('/');
 			})
 			.catch((error) => {

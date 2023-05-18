@@ -1,11 +1,12 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import './navbar.css';
 
 function Navbar() {
-	const [isLoggedIn, setIsLoggedIn] = useState(Cookies.get('isLoggedIn'));
+	const [isLoggedIn, setIsLoggedIn] = useState(Cookies.get('token'));
+	const navigate = useNavigate();
 
 	const handleLogout = async () => {
 		const axiosInstance = axios.create({
@@ -22,22 +23,23 @@ function Navbar() {
 		try {
 			await axiosInstance.get('http://localhost:3000/logout', options);
 			console.log('Logout successful');
-			Cookies.remove('isLoggedIn');
+			Cookies.remove('token');
 			setIsLoggedIn(null);
+			navigate('/');
 		} catch (error) {
 			console.log(error);
 		}
 	};
 
 	useEffect(() => {
-		setIsLoggedIn(Cookies.get('isLoggedIn'));
+		setIsLoggedIn(Cookies.get('token'));
 	}, []);
 
 	return (
 		<>
 			<header>
 				<div className="name">
-					<NavLink exact to="/" onClick={() => window.location.reload()}>
+					<NavLink exact to="/" onClick={() => navigate('/')}>
 						<h1>
 							<i className="fa-solid fa-eye"></i>VERSEER
 						</h1>

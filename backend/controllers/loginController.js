@@ -10,7 +10,7 @@ export const loginUser = async (req, res) => {
 		user.token = generateJwtToken(user._id);
 		res.cookie('token', user.token, {
 			maxAge: 24 * 60 * 60 * 1000,
-			httpOnly: true,
+			// httpOnly: true,
 		});
 
 		return res.json({
