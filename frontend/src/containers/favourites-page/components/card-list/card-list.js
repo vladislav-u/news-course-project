@@ -23,8 +23,12 @@ function CardList({ children }) {
 		<>
 			<ul className="card__list">
 				{data.map(
-					({ image, title, description, url, sourceName, sourceUrl, date }) => (
+					(
+						{ image, title, description, url, sourceName, sourceUrl, date },
+						index
+					) => (
 						<Card
+							key={index}
 							title={title}
 							description={description}
 							image={image}
