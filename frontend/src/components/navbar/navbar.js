@@ -25,7 +25,6 @@ function Navbar() {
 			console.log('Logout successful');
 			Cookies.remove('token');
 			setIsLoggedIn(null);
-			navigate('/');
 		} catch (error) {
 			console.log(error);
 		}
@@ -52,9 +51,9 @@ function Navbar() {
 								<Link to="/favourites">Favourites</Link>
 							</li>
 							<li className="nav__link">
-								<button className="nav__link" onClick={handleLogout}>
+								<Link to="/" onClick={handleLogout}>
 									Logout
-								</button>
+								</Link>
 							</li>
 						</ul>
 					) : (
