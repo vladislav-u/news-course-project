@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useEffect, useState } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './navbar.css';
 
 function Navbar() {
@@ -38,11 +38,16 @@ function Navbar() {
 		<>
 			<header>
 				<div className="name">
-					<NavLink exact to="/" onClick={() => navigate('/')}>
+					<Link
+						onClick={() => {
+							navigate('/');
+							window.location.reload(false);
+						}}
+					>
 						<h1>
 							<i className="fa-solid fa-eye"></i>VERSEER
 						</h1>
-					</NavLink>
+					</Link>
 				</div>
 				<nav>
 					{isLoggedIn ? (
