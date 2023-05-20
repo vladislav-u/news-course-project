@@ -32,6 +32,7 @@ app.use(
 			'http://localhost:3001',
 			'http://localhost:3001/favourites',
 			'http://localhost:3001/logout',
+			'http://localhost:3001/register',
 		],
 	})
 );
